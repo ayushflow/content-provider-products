@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <permission android:name="solutions.flutterflow.productwarehouse.READ_PRODUCTS"
+        android:protectionLevel="normal"
+        android:label="@string/read_products_permission"
+        android:description="@string/read_products_permission_description"/>
+
+    <permission android:name="solutions.flutterflow.productwarehouse.WRITE_PRODUCTS"
+        android:protectionLevel="normal"
+        android:label="@string/write_products_permission"
+        android:description="@string/write_products_permission_description"/>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ProductWarehouse"
+        tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ProductWarehouse">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <provider
+            android:name=".ProductProvider"
+            android:authorities="solutions.flutterflow.productwarehouse.products"
+            android:exported="true"
+            android:readPermission="solutions.flutterflow.productwarehouse.READ_PRODUCTS"
+            android:writePermission="solutions.flutterflow.productwarehouse.WRITE_PRODUCTS"
+            >
+        </provider>
+    </application>
+
+</manifest>
